@@ -1,76 +1,80 @@
 # Student Management System
 
-A beginner-friendly console application written in C++17. This project manages student records and demonstrates the concepts required for a C++ mini project.
+A console-based Student Management System written in C++. It lets the user manage student records through a simple menu.
 
 ## Features
 
-- Add, display, search, update and delete student records.
-- Calculate a grade automatically from marks.
-- Prevent duplicate roll numbers.
-- Validate roll numbers, menu choices and marks.
-- Save records in `students.txt` and load them when the program starts.
-- Show clear error messages when a record is not found or an operation is invalid.
+- Add a student record.
+- Display all saved student records.
+- Search for a student using their roll number.
+- Update a student's details.
+- Delete a student record.
+- Calculate a grade automatically from the student's marks.
+- Save records to `students.txt` and load them when the program starts.
 
-## C++ concepts demonstrated
+## C++ concepts used
 
-- **Classes and objects:** `Person`, `Student` and `StudentManagement`.
-- **Encapsulation:** student data is private and accessed through member functions.
-- **Inheritance:** `Student` inherits from the abstract `Person` class.
-- **Runtime polymorphism:** `display()` is overridden and called through a `Person` pointer.
-- **STL:** `vector<Student>` stores the records.
-- **Exception handling:** `runtime_error` reports duplicate roll numbers, missing students and file errors.
-- **File handling:** `ifstream` loads records and `ofstream` saves them.
+- **Classes and objects:** The program uses the `Student` and `StudentManagement` classes.
+- **STL vector:** `vector<Student>` stores the student records in memory.
+- **File handling:** `ofstream` writes records to `students.txt`, while `ifstream` reads them when the application starts.
+- **Loops and conditions:** Used for menu repetition, searching records and calculating grades.
+- **Member functions:** Functions such as `addStudent()`, `displayStudents()`, `searchStudent()`, `updateStudent()` and `deleteStudent()` organize the program's operations.
+
+## Grade calculation
+
+| Marks | Grade |
+|---|---|
+| 90 and above | A+ |
+| 75–89 | A |
+| 60–74 | B |
+| 40–59 | C |
+| Below 40 | Fail |
 
 ## Requirements
 
-- C++17 compiler (GCC or Clang).
-- macOS, Linux or Windows terminal.
+- A C++ compiler such as GCC or Clang.
+- C++17 support is recommended.
 
 ## Compile and run
 
-On macOS or Linux:
+Open a terminal in the project folder and run:
 
 ```bash
-g++ -std=c++17 -Wall -Wextra -pedantic main.cpp -o student
+g++ -std=c++17 main.cpp -o student
 ./student
 ```
 
-On Windows with MinGW:
+Compile again whenever you make changes to `main.cpp`. If you have not changed the source code and have already compiled it, you can run the existing executable with `./student`.
 
-```bash
-g++ -std=c++17 -Wall -Wextra -pedantic main.cpp -o student.exe
-student.exe
-```
+## Data storage
 
-Run the program from the project folder so it can find `students.txt`.
+The program stores records in a file named `students.txt`. Each student's information is written on separate lines in this order:
 
-## Data file
+1. Roll number
+2. Name
+3. Course
+4. Marks
 
-The program creates `students.txt` when the first student is added. Each line stores:
-
-```text
-roll number|name|course|marks
-```
-
-Do not use the pipe character (`|`) in names or course names because it separates the fields.
-
-## Suggested tests
-
-1. Add a student with marks of 92 and check the A+ grade.
-2. Display all students.
-3. Search for an existing roll number.
-4. Try adding the same roll number again.
-5. Update a student's details.
-6. Delete a student.
-7. Search for a roll number that does not exist.
-8. Exit and restart to confirm records are loaded from the file.
-9. Enter invalid marks (for example, 120) and confirm the program asks again.
+The file is loaded automatically when a `StudentManagement` object is created. The file is updated after adding, updating or deleting a student.
 
 ## Project structure
 
-- `main.cpp` — source code.
-- `students.txt` — student records, created by the program.
-- `docs/class-diagram.mmd` — UML class diagram.
-- `docs/sample-output.md` — illustrative console output.
+- `main.cpp` — complete C++ source code.
+- `students.txt` — data file created by the program when records are saved.
+- `docs/class-diagram.mmd` — class diagram for the current source code.
+- `docs/sample-output.md` — example of the program's console interaction.
 
-Capture screenshots of your own program run for the practical submission.
+## Testing
+
+The following operations can be tested from the menu:
+
+1. Add a student and enter their details.
+2. Display the student records.
+3. Search using an existing and a non-existing roll number.
+4. Update an existing student's details.
+5. Delete an existing student.
+6. Exit, restart the program and check that saved records are loaded.
+
+## Current scope
+
+This version demonstrates classes, objects, a private STL vector, basic file input/output and menu-driven record management. It does not currently implement inheritance, polymorphism, exception handling or comprehensive input validation.
