@@ -7,6 +7,11 @@
 
 using namespace std;
 
+// Input helper declarations used by the classes below.
+int readInteger(const string& message);
+float readMarks(const string& message);
+string readText(const string& message);
+
 // Base class: common details of a person.
 class Person {
 private:
