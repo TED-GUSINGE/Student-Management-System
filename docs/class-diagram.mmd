@@ -1,33 +1,25 @@
 classDiagram
-    class Person {
-        -int rollNo
-        -string name
-        +Person(int, string)
-        +getRollNo()
-        +getName()
-        +display()*
-    }
-
     class Student {
-        -string course
-        -float marks
-        +Student(int, string, string, float)
-        +getGrade()
-        +updateDetails()
+        +int rollNo
+        +string name
+        +string course
+        +float marks
+        +input()
         +display()
+        +getGrade() string
     }
 
     class StudentManagement {
         -vector~Student~ students
-        -findStudent(int)
         -saveToFile()
         -loadFromFile()
+        +StudentManagement()
         +addStudent()
         +displayStudents()
         +searchStudent()
         +updateStudent()
         +deleteStudent()
+        +menu()
     }
 
-    Person <|-- Student : inherits
-    StudentManagement o-- "0..*" Student : stores
+    StudentManagement "1" o-- "0..*" Student : stores
